@@ -128,7 +128,7 @@ def on() {
 	zigbee.on()
 }
 
-def setLevel(value) {
+def setLevel(value, rate = null) {
 	zigbee.setLevel(value)
 }
 /**
@@ -157,5 +157,5 @@ def configure() {
 	setupHealthCheck()
 
 	// OnOff minReportTime 0 seconds, maxReportTime 5 min. Reporting interval if no activity
-	zigbee.onOffConfig(0, 300) + zigbee.levelConfig() + refresh()
+	zigbee.onOffConfig(0, 300) + zigbee.levelConfig() + zigbee.enrollResponse() + refresh()
 }
